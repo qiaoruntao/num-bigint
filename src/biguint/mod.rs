@@ -321,8 +321,8 @@ impl Integer for BigUint {
 
 #[inline]
 fn fixpoint<F>(mut x: BigUint, max_bits: u64, f: F) -> BigUint
-where
-    F: Fn(&BigUint) -> BigUint,
+    where
+        F: Fn(&BigUint) -> BigUint,
 {
     let mut xn = f(&x);
 
@@ -384,7 +384,7 @@ impl Roots for BigUint {
         let max_bits = bits / n64 + 1;
 
         #[cfg(feature = "std")]
-        let guess = match self.to_f64() {
+            let guess = match self.to_f64() {
             Some(f) if f.is_finite() => {
                 use num_traits::FromPrimitive;
 
@@ -406,7 +406,7 @@ impl Roots for BigUint {
         };
 
         #[cfg(not(feature = "std"))]
-        let guess = BigUint::one() << max_bits;
+            let guess = BigUint::one() << max_bits;
 
         let n_min_1 = n - 1;
         fixpoint(guess, max_bits, move |s| {
@@ -432,7 +432,7 @@ impl Roots for BigUint {
         let max_bits = bits / 2 + 1;
 
         #[cfg(feature = "std")]
-        let guess = match self.to_f64() {
+            let guess = match self.to_f64() {
             Some(f) if f.is_finite() => {
                 use num_traits::FromPrimitive;
 
@@ -450,7 +450,7 @@ impl Roots for BigUint {
         };
 
         #[cfg(not(feature = "std"))]
-        let guess = BigUint::one() << max_bits;
+            let guess = BigUint::one() << max_bits;
 
         fixpoint(guess, max_bits, move |s| {
             let q = self / s;
@@ -473,7 +473,7 @@ impl Roots for BigUint {
         let max_bits = bits / 3 + 1;
 
         #[cfg(feature = "std")]
-        let guess = match self.to_f64() {
+            let guess = match self.to_f64() {
             Some(f) if f.is_finite() => {
                 use num_traits::FromPrimitive;
 
@@ -491,7 +491,7 @@ impl Roots for BigUint {
         };
 
         #[cfg(not(feature = "std"))]
-        let guess = BigUint::one() << max_bits;
+            let guess = BigUint::one() << max_bits;
 
         fixpoint(guess, max_bits, move |s| {
             let q = self / (s * s);
@@ -524,13 +524,13 @@ impl BigUint {
         let mut big = BigUint::zero();
 
         #[cfg(not(u64_digit))]
-        {
-            big.data = digits;
-            big.normalize();
-        }
+            {
+                big.data = digits;
+                big.normalize();
+            }
 
         #[cfg(u64_digit)]
-        big.assign_from_slice(&digits);
+            big.assign_from_slice(&digits);
 
         big
     }
@@ -553,10 +553,10 @@ impl BigUint {
         self.data.clear();
 
         #[cfg(not(u64_digit))]
-        self.data.extend_from_slice(slice);
+            self.data.extend_from_slice(slice);
 
         #[cfg(u64_digit)]
-        self.data.extend(slice.chunks(2).map(u32_chunk_to_u64));
+            self.data.extend(slice.chunks(2).map(u32_chunk_to_u64));
 
         self.normalize();
     }

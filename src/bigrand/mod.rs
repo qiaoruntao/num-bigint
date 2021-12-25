@@ -153,9 +153,9 @@ impl UniformSampler for UniformBigUint {
 
     #[inline]
     fn new<B1, B2>(low_b: B1, high_b: B2) -> Self
-    where
-        B1: SampleBorrow<Self::X> + Sized,
-        B2: SampleBorrow<Self::X> + Sized,
+        where
+            B1: SampleBorrow<Self::X> + Sized,
+            B2: SampleBorrow<Self::X> + Sized,
     {
         let low = low_b.borrow();
         let high = high_b.borrow();
@@ -168,9 +168,9 @@ impl UniformSampler for UniformBigUint {
 
     #[inline]
     fn new_inclusive<B1, B2>(low_b: B1, high_b: B2) -> Self
-    where
-        B1: SampleBorrow<Self::X> + Sized,
-        B2: SampleBorrow<Self::X> + Sized,
+        where
+            B1: SampleBorrow<Self::X> + Sized,
+            B2: SampleBorrow<Self::X> + Sized,
     {
         let low = low_b.borrow();
         let high = high_b.borrow();
@@ -185,9 +185,9 @@ impl UniformSampler for UniformBigUint {
 
     #[inline]
     fn sample_single<R: Rng + ?Sized, B1, B2>(low: B1, high: B2, rng: &mut R) -> Self::X
-    where
-        B1: SampleBorrow<Self::X> + Sized,
-        B2: SampleBorrow<Self::X> + Sized,
+        where
+            B1: SampleBorrow<Self::X> + Sized,
+            B2: SampleBorrow<Self::X> + Sized,
     {
         rng.gen_biguint_range(low.borrow(), high.borrow())
     }
@@ -209,9 +209,9 @@ impl UniformSampler for UniformBigInt {
 
     #[inline]
     fn new<B1, B2>(low_b: B1, high_b: B2) -> Self
-    where
-        B1: SampleBorrow<Self::X> + Sized,
-        B2: SampleBorrow<Self::X> + Sized,
+        where
+            B1: SampleBorrow<Self::X> + Sized,
+            B2: SampleBorrow<Self::X> + Sized,
     {
         let low = low_b.borrow();
         let high = high_b.borrow();
@@ -224,9 +224,9 @@ impl UniformSampler for UniformBigInt {
 
     #[inline]
     fn new_inclusive<B1, B2>(low_b: B1, high_b: B2) -> Self
-    where
-        B1: SampleBorrow<Self::X> + Sized,
-        B2: SampleBorrow<Self::X> + Sized,
+        where
+            B1: SampleBorrow<Self::X> + Sized,
+            B2: SampleBorrow<Self::X> + Sized,
     {
         let low = low_b.borrow();
         let high = high_b.borrow();
@@ -241,9 +241,9 @@ impl UniformSampler for UniformBigInt {
 
     #[inline]
     fn sample_single<R: Rng + ?Sized, B1, B2>(low: B1, high: B2, rng: &mut R) -> Self::X
-    where
-        B1: SampleBorrow<Self::X> + Sized,
-        B2: SampleBorrow<Self::X> + Sized,
+        where
+            B1: SampleBorrow<Self::X> + Sized,
+            B2: SampleBorrow<Self::X> + Sized,
     {
         rng.gen_bigint_range(low.borrow(), high.borrow())
     }
